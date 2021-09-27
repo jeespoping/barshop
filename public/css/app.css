@@ -10,3 +10,10 @@
     font-size: 16px;
 }
 
+.container {
+    margin-top: 20px;
+}
+.mx-auto{
+    margin: auto auto;
+}
+
