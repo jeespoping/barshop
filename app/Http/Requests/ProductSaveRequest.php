@@ -24,7 +24,7 @@ class ProductSaveRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|min:3|unique:products',
+            'name' => 'required|min:3',
             'price' => 'required|numeric',
             'description' => 'required'
         ];
