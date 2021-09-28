@@ -17,3 +17,13 @@
     margin: auto auto;
 }
 
+th{
+    text-align: center !important;
+}
+tr{
+    text-align: center !important;
+}
+.card img{
+    max-height: 150px;
+}
+

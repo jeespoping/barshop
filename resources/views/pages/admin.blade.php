@@ -5,7 +5,37 @@
     <div class="container">
         <div class="grid-container">
             <p><button class="button" data-open="Modal1">Crear producto</button></p>
+
+            <table>
+                <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Descripcion</th>
+                    <th>Precio</th>
+                    <th>Acciones</th>
+                </tr>
+                </thead>
+                <tbody>
+                @foreach ($products as $product)
+                    <tr>
+                        <td>{{$product->name}}</td>
+                        <td>{{$product->description}}</td>
+                        <td>{{$product->price}}</td>
+                        <td style="display: flex; justify-content: center">
+                            <a style="margin-right: 10px" href="{{route('products.edit', $product)}}" class="success button">Editar</a>
+                            <form action="{{route('products.destroy', $product)}}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button class="alert button" onclick="return confirm('¿Estás seguro de querer eliminar este producto?')">Eliminar</button>
+                            </form>
+                        </td>
+                    </tr>
+                @endforeach
+                </tbody>
+            </table>
         </div>
+
+
     </div>
 
     <div class="reveal" id="Modal1" data-reveal>
@@ -29,7 +59,7 @@
                         <div class="cell">
                             <label>
                                 Descripción del producto
-                                <textarea required rows="10" placeholder="Descripción"></textarea>
+                                <textarea name="description" required rows="10" placeholder="Descripción"></textarea>
                             </label>
                         </div>
                     </div>
@@ -43,6 +73,4 @@
             <span aria-hidden="true">&times;</span>
         </button>
     </div>
-
-
 @endsection
